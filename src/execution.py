@@ -4,6 +4,7 @@ import lastname_sort
 import read_data
 from datetime import datetime
 import os
+import errno
 
 PROJECT_ABSOLUTE_PATH = os.path.dirname(os.path.abspath(__file__))
 
@@ -14,6 +15,15 @@ text1="gender then lastname ascending\n--------------------------\n"
 text2="\ndateofbirth ascending\n--------------------------\n"
 text3="\nlastname descending\n--------------------------\n"
 
+
+if not os.path.exists(os.path.dirname(PROJECT_ABSOLUTE_PATH +
+                                        "\\output\\output.txt")):
+    try:
+        os.makedirs(os.path.dirname(PROJECT_ABSOLUTE_PATH + 
+                                        "\\output\\output.txt"))
+    except OSError as exception: 
+        if exception.errno != errno.EEXIST:
+            raise
 """
 Execution of first sorting
 """
