@@ -1,5 +1,7 @@
 from datetime import datetime
+import os
 
+PROJECT_ABSOLUTE_PATH = os.path.dirname(os.path.abspath(__file__))
 class ReadData:
     """
     Reading data from the .txt
@@ -94,8 +96,10 @@ class FormatData:
     :returns final formatted list
     """
     @staticmethod
-    def append_list(comma_list_row_1,comma_list_row_2,comma_list_row_3,pipe_list_row_1,pipe_list_row_2,
-                    pipe_list_row_3, space_list_row_1, space_list_row_2, space_list_row_3):
+    def append_list(comma_list_row_1,comma_list_row_2,comma_list_row_3,
+                    pipe_list_row_1,pipe_list_row_2,
+                    pipe_list_row_3, space_list_row_1, space_list_row_2, 
+                    space_list_row_3):
         final_list=[]
         final_list.append(comma_list_row_1)
         final_list.append(comma_list_row_2)
@@ -109,32 +113,63 @@ class FormatData:
         return final_list
 
 def main():
-    comma_str_row_1,comma_str_row_2,comma_str_row_3=ReadData("comma.txt",).read_data()
-    pipe_str_row_1,pipe_str_row_2,pipe_str_row_3=ReadData("pipe.txt",).read_data()
-    space_str_row_1,space_str_row_2,space_str_row_3=ReadData("space.txt",).read_data()
+    comma_str_row_1,comma_str_row_2,comma_str_row_3=ReadData(
+        PROJECT_ABSOLUTE_PATH+"\\inputs\\comma.txt",).read_data()
+    pipe_str_row_1,pipe_str_row_2,pipe_str_row_3=ReadData(
+        PROJECT_ABSOLUTE_PATH+"\\inputs\\pipe.txt",).read_data()
+    space_str_row_1,space_str_row_2,space_str_row_3=ReadData(
+        PROJECT_ABSOLUTE_PATH+"\\inputs\\space.txt",).read_data()
 
-    comma_list_row_1,pipe_list_row_1,space_list_row_1=FormatData().convert_str_to_list(comma_str_row_1,pipe_str_row_1,space_str_row_1)
-    comma_list_row_2,pipe_list_row_2,space_list_row_2=FormatData().convert_str_to_list(comma_str_row_2,pipe_str_row_2,space_str_row_2)
-    comma_list_row_3,pipe_list_row_3,space_list_row_3=FormatData().convert_str_to_list(comma_str_row_3,pipe_str_row_3,space_str_row_3)
+    comma_list_row_1,pipe_list_row_1,space_list_row_1=FormatData(
+
+    ).convert_str_to_list(comma_str_row_1,pipe_str_row_1,space_str_row_1)
+    comma_list_row_2,pipe_list_row_2,space_list_row_2=FormatData(
+
+    ).convert_str_to_list(comma_str_row_2,pipe_str_row_2,space_str_row_2)
+    comma_list_row_3,pipe_list_row_3,space_list_row_3=FormatData(
+
+    ).convert_str_to_list(comma_str_row_3,pipe_str_row_3,space_str_row_3)
 
     order_comma = [0, 1, 2, 4, 3]
     order_pipe = [0, 1, 3, 5, 4, 2]
     order_space = [0, 1, 3, 4, 5, 2]
 
-    comma_list_row_1,comma_list_row_2,comma_list_row_3=FormatData().reorder_list(comma_list_row_1,comma_list_row_2,comma_list_row_3,order_comma)
-    pipe_list_row_1, pipe_list_row_2, pipe_list_row_3=FormatData().reorder_list(pipe_list_row_1, pipe_list_row_2, pipe_list_row_3, order_pipe)
-    space_list_row_1, space_list_row_2, space_list_row_3=FormatData().reorder_list(space_list_row_1, space_list_row_2, space_list_row_3, order_space)
+    comma_list_row_1,comma_list_row_2,comma_list_row_3=FormatData(
+    ).reorder_list(comma_list_row_1,comma_list_row_2,
+                    comma_list_row_3,order_comma)
+    
+    pipe_list_row_1, pipe_list_row_2, pipe_list_row_3=FormatData(
+    ).reorder_list(pipe_list_row_1, pipe_list_row_2, 
+                    pipe_list_row_3, order_pipe)
+    
+    space_list_row_1, space_list_row_2, space_list_row_3=FormatData(
+    ).reorder_list(space_list_row_1, space_list_row_2, 
+                    space_list_row_3, order_space)
 
-    pipe_list_row_1, pipe_list_row_2, pipe_list_row_3=FormatData().remove_middle_name(pipe_list_row_1, pipe_list_row_2, pipe_list_row_3)
-    space_list_row_1, space_list_row_2, space_list_row_3=FormatData().remove_middle_name(space_list_row_1, space_list_row_2, space_list_row_3)
+    pipe_list_row_1, pipe_list_row_2, pipe_list_row_3=FormatData(
+    ).remove_middle_name(pipe_list_row_1, pipe_list_row_2, pipe_list_row_3)
+    
+    space_list_row_1, space_list_row_2, space_list_row_3=FormatData(
+    ).remove_middle_name(space_list_row_1, space_list_row_2, space_list_row_3)
 
-    pipe_list_row_1, pipe_list_row_2, pipe_list_row_3=FormatData().convert_gender(pipe_list_row_1,pipe_list_row_2,pipe_list_row_3,"M","Male")
-    space_list_row_1, space_list_row_2, space_list_row_3=FormatData().convert_gender(space_list_row_1, space_list_row_2, space_list_row_3,"F","Female")
+    pipe_list_row_1, pipe_list_row_2, pipe_list_row_3=FormatData(
+    ).convert_gender(pipe_list_row_1,pipe_list_row_2,
+                    pipe_list_row_3,"M","Male")
+    
+    space_list_row_1, space_list_row_2, space_list_row_3=FormatData(
+    ).convert_gender(space_list_row_1, space_list_row_2, 
+                    space_list_row_3,"F","Female")
 
-    pipe_list_row_1, pipe_list_row_2, pipe_list_row_3=FormatData().convert_date(pipe_list_row_1, pipe_list_row_2, pipe_list_row_3)
-    space_list_row_1, space_list_row_2, space_list_row_3 = FormatData().convert_date(space_list_row_1, space_list_row_2, space_list_row_3)
+    pipe_list_row_1, pipe_list_row_2, pipe_list_row_3=FormatData(
+    ).convert_date(pipe_list_row_1, pipe_list_row_2, pipe_list_row_3)
+    
+    space_list_row_1, space_list_row_2, space_list_row_3 = FormatData(
+    ).convert_date(space_list_row_1, space_list_row_2, space_list_row_3)
 
-    final_list=FormatData().append_list(comma_list_row_1,comma_list_row_2,comma_list_row_3,pipe_list_row_1,pipe_list_row_2, pipe_list_row_3, space_list_row_1, space_list_row_2, space_list_row_3)
+    final_list=FormatData().append_list(
+        comma_list_row_1,comma_list_row_2,comma_list_row_3,pipe_list_row_1,
+        pipe_list_row_2, pipe_list_row_3, space_list_row_1, space_list_row_2, 
+        space_list_row_3)
     return final_list
 
 if __name__=="__main__":

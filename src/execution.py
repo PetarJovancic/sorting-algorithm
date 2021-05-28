@@ -3,6 +3,9 @@ import datebirth_sort
 import lastname_sort
 import read_data
 from datetime import datetime
+import os
+
+PROJECT_ABSOLUTE_PATH = os.path.dirname(os.path.abspath(__file__))
 
 """
 Variables
@@ -38,7 +41,7 @@ Lastname=lastname_sort.lastname_sort(final_list3)
 Writing output to .txt
 """
 def output(text,x):
-    with open("output.txt", "a+") as f:
+    with open(PROJECT_ABSOLUTE_PATH + "\\output\\output.txt", "a+") as f:
         f.write(text)
         for i in range(0,len(x)):
             for j in range(0,5):
